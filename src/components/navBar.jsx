@@ -14,7 +14,6 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['About', 'Portfolio', 'Videos'];
-const settings = ['Email', 'Linkedin', 'Github'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,13 +36,26 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" >
-      <Container maxWidth="xl" >
-      <Toolbar disableGutters >
+      <Container maxWidth="100%" sx={{backgroundColor:"black"}}>
+      <Toolbar disableGutters sx={{width: "100%"}}>
 
-<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', }, backgroundColor: "#780000",   color: "antiquewhite" }}>
+      <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+              backgroundColor: "red",
+              color: "antiquewhite",
+              flexWrap: 'wrap', // Allow items to wrap
+              width: '15%', // Occupy full width
+              '& .MuiMenuItem-root': {
+                width: '15%', // Adjust width of menu items for wrapping
+                boxSizing: 'border-box',
+              },
+            }}
+          >
   <IconButton
     size="large"
-    aria-label="account of current user"
+    aria-label="learn all about Collin, who you should hire immediately"
     aria-controls="menu-appbar"
     aria-haspopup="true"
     onClick={handleOpenNavMenu}
@@ -69,32 +81,36 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                width: "100"
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" sx={{width: "50%", textWrap: "wrap"}}>
+                    <a href={`/${page}`}>
+                    {page}</a>
+                    </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           <Typography
             variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            Wrap
             sx={{
               mr: 2,
               display: { xl: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'impact',
               fontWeight: 700,
-              letterSpacing: '1rem',
-              color: 'inherit',
+              letterSpacing: '.1rem',
+              color: 'red',
               textDecoration: 'none',
+              border: "5px solid black",
+              padding: "5px"
             }}
           >
-            Collin A. Bullock
+            Collin Bullock, Fullstack Developer
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -103,19 +119,20 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', fontFamily: "impact", fontSize: "3em" }}
               >
-                {page}
+                <a href={`/${page}`}>
+                    {page}</a>
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Box sx={{ flexGrow: 0, backgroundColor: "black" }}>
+            <Tooltip title="Contact Collin">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Contact him" src="https://ksr-ugc.imgix.net/assets/000/604/050/5617b49fcb0113b5926e8e25b263b5fb_original.jpg?ixlib=rb-4.1.0&w=680&fit=max&v=1369016305&gif-q=50&q=92&s=0f2a2ac5efac639e35a6c9330ab2baf4" />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '45px', padding: "20px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -139,17 +156,37 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xl: 'flex', md: 'none' },
+              display: { xl: 'flex', flexDirection: "column", md: 'none' },
               flexGrow: 1,
-              fontFamily: 'impact',
+              fontFamily: 'Impact',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.5rem',
+              color: 'red',
               textDecoration: 'none',
             }}
           >
+                    
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" sx={{
+              mr: 2,
+              display: { xl: 'flex', flexDirection: "column", md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'Impact',
+              fontWeight: 700,
+              letterSpacing: '.1rem',
+              fontSize: "2em",
+              color: 'red',
+              textDecoration: 'none',
+            }}>
+              
+
                   <a href="mailto:collin@collinbullock.com">Collin's Email</a><br />
-                  <a href="https://collinbullock.netlify.app/PICS/linkedin.jpg">Collin's LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/collin-bullock/">Collin's LinkedIn</a><br />
+                  <a href="https://github.com/CollinABullock">Collin's GitHub</a><br />
+                  
+                    </Typography>
+                </MenuItem>
+         
                   </Typography>
                  
                 </MenuItem>
