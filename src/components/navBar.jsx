@@ -86,7 +86,8 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" sx={{width: "50%", textWrap: "wrap"}}>
+                  
+                  <Typography textAlign="center" sx={{width: "100%", textWrap: "wrap", fontFamily: "impact", color: "red", fontSize: "1em"}}>
                     <a href={`/${page}`}>
                     {page}</a>
                     </Typography>
@@ -112,15 +113,24 @@ function ResponsiveAppBar() {
           >
             Collin Bullock, Fullstack Developer
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', width: "100%", justifyContent: "space-evenly", } }}>
+            {pages.map((page, index) => ( // Added index to differentiate styles
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', fontFamily: "impact", fontSize: "3em" }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  fontFamily: "impact",
+                  fontSize: "3em",
+                  marginRight: index !== pages.length - 1 ? '20px' : '0', // Add right margin except for last link
+                }}
               >
                 <a href={`/${page}`}>
-                    {page}</a>
+                  {page}
+                </a>
               </Button>
             ))}
           </Box>
@@ -132,7 +142,7 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px', padding: "20px" }}
+              sx={{ mt: '45px', padding: "20px", justifyContent: "space-evenly"}}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{

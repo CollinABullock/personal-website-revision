@@ -1,10 +1,10 @@
 import ResponsiveAppBar from "./navBar";
 
-export default function About() {
+export default function Portfolio() {
   return (
     <>
     <ResponsiveAppBar />
-    <h1>What's Collin All About?</h1>
+    <h1>Portfolio Coming Soon</h1>
     </>
   )
 }
